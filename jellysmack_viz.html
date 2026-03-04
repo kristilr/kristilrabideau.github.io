@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jellysmack · By The Numbers</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --white: #ffffff;
+  --off: #f7f7f7;
+  --rule: #e8e8e8;
+  --muted: #bbbbbb;
+  --dim: #888888;
+  --ink: #111111;
+  --pink: #FFB3DA;
+  --r: 'Roboto', sans-serif;
+}
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+.wrap { max-width: 960px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
+
+/* HEADER */
+.hd {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1.25rem;
+  margin-bottom: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.hd-title { font-size: 1.5rem; font-weight: 100; letter-spacing: 0.08em; }
+.hd-title span { color: var(--pink); }
+.hd-meta { font-size: 0.6rem; font-weight: 100; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); text-align: right; line-height: 2; }
+
+/* SECTION LABEL */
+.slabel {
+  font-size: 0.55rem;
+  font-weight: 100;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.slabel::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+/* BLOCK SPACING */
+.block { margin-bottom: 4rem; }
+
+/* ── VIZ 1: GROWTH ARC (SVG line chart) ── */
+.viz-growth {
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+  background: var(--white);
+}
+.viz-growth-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+.vgh-stat { }
+.vgh-num { font-size: 3.5rem; font-weight: 100; letter-spacing: -0.04em; color: var(--pink); line-height: 1; }
+.vgh-label { font-size: 0.6rem; font-weight: 100; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.25rem; }
+.vgh-note { font-size: 0.75rem; font-weight: 100; color: var(--dim); max-width: 260px; text-align: right; line-height: 1.7; }
+svg.line-chart { width: 100%; height: 160px; overflow: visible; }
+.chart-label { font-family: 'Roboto', sans-serif; font-size: 9px; font-weight: 100; fill: var(--dim); letter-spacing: 0.08em; }
+.axis-line { stroke: var(--rule); stroke-width: 1; }
+.data-line { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 800; stroke-dashoffset: 800; transition: stroke-dashoffset 2s ease; }
+.data-line.pink { stroke: var(--pink); stroke-width: 2; }
+.data-line.drawn { stroke-dashoffset: 0; }
+.dot { fill: var(--white); stroke: var(--ink); stroke-width: 1.5; r: 3; transition: r 0.2s; }
+.dot.pink-dot { stroke: var(--pink); fill: var(--pink); }
+.dot:hover { r: 5; }
+
+/* ── VIZ 2: PERCENTAGE BARS ── */
+.viz-bars {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.vb-left {
+  background: var(--ink);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.vb-big { font-size: 4rem; font-weight: 100; letter-spacing: -0.04em; color: var(--pink); line-height: 1; }
+.vb-pct { font-size: 2rem; font-weight: 100; color: var(--pink); }
+.vb-sub { font-size: 0.58rem; font-weight: 100; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; line-height: 1.7; }
+.vb-right { padding: 2rem 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; justify-content: center; }
+.vb-row { }
+.vb-meta { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+.vb-name { font-size: 0.6rem; font-weight: 100; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.vb-val { font-size: 0.6rem; font-weight: 300; color: var(--dim); }
+.vb-track { height: 2px; background: var(--rule); position: relative; }
+.vb-fill { position: absolute; top: 0; left: 0; height: 2px; background: var(--pink); width: 0%; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
+.vb-fill.dark { background: var(--ink); }
+
+/* ── VIZ 3: RADIAL / DONUT SNAP ── */
+.viz-snap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--rule);
+  gap: 0;
+}
+.vs-left {
+  padding: 2.5rem;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.vs-right {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+}
+svg.donut { width: 180px; height: 180px; }
+.donut-bg { fill: none; stroke: var(--rule); stroke-width: 10; }
+.donut-val { fill: none; stroke: var(--pink); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 503; stroke-dashoffset: 503; transition: stroke-dashoffset 1.8s ease; }
+.donut-label { font-family: 'Roboto', sans-serif; font-size: 28px; font-weight: 100; fill: var(--ink); text-anchor: middle; }
+.donut-sub { font-family: 'Roboto', sans-serif; font-size: 8px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.15em; text-transform: uppercase; }
+.vs-stat { }
+.vs-num { font-size: 2.4rem; font-weight: 100; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+.vs-num.pink { color: var(--pink); }
+.vs-lbl { font-size: 0.58rem; font-weight: 100; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.25rem; line-height: 1.6; }
+.vs-divider { height: 1px; background: var(--rule); }
+
+/* ── VIZ 4: SCATTER / BUBBLE CHART (top content) ── */
+.viz-bubble {
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+}
+.vbub-header { margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+.vbub-title { font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+.vbub-legend { display: flex; gap: 1.5rem; align-items: center; }
+.leg-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.1em; color: var(--dim); text-transform: uppercase; }
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; }
+svg.bubble-chart { width: 100%; height: 200px; }
+.bubble { opacity: 0; transition: opacity 0.5s ease, r 0.3s ease; cursor: default; }
+.bubble:hover { opacity: 1 !important; }
+.bubble-label { font-family: 'Roboto', sans-serif; font-size: 8.5px; font-weight: 100; fill: var(--ink); text-anchor: middle; letter-spacing: 0.06em; }
+.bubble-num { font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 300; fill: var(--ink); text-anchor: middle; }
+.bubble-platform { font-family: 'Roboto', sans-serif; font-size: 7px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.08em; text-transform: uppercase; }
+.bub-axis { stroke: var(--rule); stroke-width: 1; }
+.bub-axis-label { font-family: 'Roboto', sans-serif; font-size: 8px; font-weight: 100; fill: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ── VIZ 5: YOUTUBE PROGRESS RINGS ── */
+.viz-yt {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--rule);
+  border-right: none;
+}
+.vy-cell {
+  border-right: 1px solid var(--rule);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+svg.ring { width: 80px; height: 80px; }
+.ring-bg { fill: none; stroke: var(--rule); stroke-width: 5; }
+.ring-val { fill: none; stroke: var(--pink); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 220; stroke-dashoffset: 220; transition: stroke-dashoffset 1.5s ease; }
+.ring-val.dark { stroke: var(--ink); }
+.ring-center { font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 100; fill: var(--ink); text-anchor: middle; }
+.ring-center-sub { font-family: 'Roboto', sans-serif; font-size: 7px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.05em; }
+.vy-num { font-size: 1.8rem; font-weight: 100; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+.vy-label { font-size: 0.58rem; font-weight: 100; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); line-height: 1.6; }
+
+/* FOOTER */
+.viz-footer { border-top: 1px solid var(--rule); padding-top: 1rem; display: flex; justify-content: space-between; }
+.viz-footer p { font-size: 0.55rem; font-weight: 100; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="hd reveal">
+    <div class="hd-title">Jellysmack <span>·</span> The Noisy Dish</div>
+    <div class="hd-meta">Kristil Rabideau · 2022–2023<br>Content Strategy · Scriptwriting · Video</div>
+  </div>
+
+  <!-- VIDEO STRIP -->
+  <div class="block reveal" style="margin-bottom:3.5rem;">
+    <div class="slabel">Content Samples · TikTok · YouTube · Snapchat · Instagram · Facebook</div>
+    <div style="width:100%;aspect-ratio:9/4;background:#f7f7f7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;margin-bottom:0.75rem;overflow:hidden;">
+      <!-- <video src="jellysmack.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video> -->
+      <span style="font-size:1.2rem;color:#FFB3DA;opacity:0.5;">▶</span>
+      <span style="font-size:0.48rem;font-weight:100;letter-spacing:0.15em;text-transform:uppercase;color:#bbbbbb;text-align:center;">Drop compiled video here</span>
+    </div>
+    <div style="font-size:0.52rem;font-weight:100;letter-spacing:0.14em;text-transform:uppercase;color:#bbbbbb;text-align:right;">
+      See on <a href="#" style="color:#FFB3DA;text-decoration:underline;text-underline-offset:3px;">TikTok</a> / <a href="#" style="color:#FFB3DA;text-decoration:underline;text-underline-offset:3px;">YouTube</a> &nbsp;·&nbsp; Audio removed for portfolio purposes. Full versions available upon request.
+    </div>
+  </div>
+
+  <!-- VIZ 1: FACEBOOK GROWTH LINE CHART -->
+  <div class="block reveal" id="viz1">
+    <div class="slabel">Facebook · Daily 1-Minute Views Growth</div>
+    <div class="viz-growth">
+      <div class="viz-growth-header">
+        <div class="vgh-stat">
+          <div class="vgh-num">225K</div>
+          <div class="vgh-label">Peak daily 1-min views</div>
+        </div>
+        <div class="vgh-note">Daily 1-minute views grew from 7,000 to 225,000 — a 3,114% increase driven by trend-benchmarked scripts and optimized thumbnails.</div>
+      </div>
+      <svg class="line-chart" viewBox="0 0 860 160" id="growthChart">
+        <!-- axes -->
+        <line class="axis-line" x1="40" y1="140" x2="840" y2="140"/>
+        <line class="axis-line" x1="40" y1="10" x2="40" y2="140"/>
+        <!-- y labels -->
+        <text class="chart-label" x="32" y="143" text-anchor="end">7K</text>
+        <text class="chart-label" x="32" y="105" text-anchor="end">50K</text>
+        <text class="chart-label" x="32" y="73" text-anchor="end">100K</text>
+        <text class="chart-label" x="32" y="40" text-anchor="end">150K</text>
+        <text class="chart-label" x="32" y="14" text-anchor="end">225K</text>
+        <!-- grid lines -->
+        <line class="axis-line" x1="40" y1="105" x2="840" y2="105" stroke-dasharray="4,4"/>
+        <line class="axis-line" x1="40" y1="73" x2="840" y2="73" stroke-dasharray="4,4"/>
+        <line class="axis-line" x1="40" y1="40" x2="840" y2="40" stroke-dasharray="4,4"/>
+        <!-- x labels -->
+        <text class="chart-label" x="100" y="155" text-anchor="middle">Jul '22</text>
+        <text class="chart-label" x="240" y="155" text-anchor="middle">Sep '22</text>
+        <text class="chart-label" x="380" y="155" text-anchor="middle">Nov '22</text>
+        <text class="chart-label" x="520" y="155" text-anchor="middle">Jan '23</text>
+        <text class="chart-label" x="660" y="155" text-anchor="middle">Feb '23</text>
+        <text class="chart-label" x="800" y="155" text-anchor="middle">Mar '23</text>
+        <!-- data path: slow growth then explosive -->
+        <path id="growthPath" class="data-line pink"
+          d="M100,136 C140,135 170,134 200,132 C240,130 270,128 300,124 C340,118 360,112 390,104 C420,94 440,85 470,72 C500,58 530,44 560,32 C590,22 620,16 650,13 C690,11 730,11 800,10"/>
+        <!-- dots -->
+        <circle class="dot pink-dot" cx="100" cy="136" r="3"/>
+        <circle class="dot pink-dot" cx="300" cy="124" r="3"/>
+        <circle class="dot pink-dot" cx="470" cy="72" r="3"/>
+        <circle class="dot pink-dot" cx="650" cy="13" r="3"/>
+        <circle class="dot pink-dot" cx="800" cy="10" r="4"/>
+        <!-- annotations -->
+        <text class="chart-label" x="108" y="128" fill="#FFB3DA">7K start</text>
+        <text class="chart-label" x="808" y="8" fill="#FFB3DA">225K peak</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- VIZ 2: PERCENTAGE GROWTH BARS -->
+  <div class="block reveal" id="viz2">
+    <div class="slabel">Facebook · 67-Day Performance Lift</div>
+    <div class="viz-bars">
+      <div class="vb-left">
+        <div class="vb-big">15.7M</div>
+        <div class="vb-sub">1-minute<br>video views<br>in 67 days</div>
+      </div>
+      <div class="vb-right">
+        <div class="vb-row">
+          <div class="vb-meta"><span class="vb-name">Minutes Viewed</span><span class="vb-val">57.8M &nbsp;+1,458%</span></div>
+          <div class="vb-track"><div class="vb-fill" data-w="96"></div></div>
+        </div>
+        <div class="vb-row">
+          <div class="vb-meta"><span class="vb-name">1-Minute Views</span><span class="vb-val">15.7M &nbsp;+1,365%</span></div>
+          <div class="vb-track"><div class="vb-fill dark" data-w="88"></div></div>
+        </div>
+        <div class="vb-row">
+          <div class="vb-meta"><span class="vb-name">3-Second Views</span><span class="vb-val">39.2M &nbsp;+1,033%</span></div>
+          <div class="vb-track"><div class="vb-fill" data-w="80"></div></div>
+        </div>
+        <div class="vb-row">
+          <div class="vb-meta"><span class="vb-name">Post Reactions</span><span class="vb-val">266.5K &nbsp;+218%</span></div>
+          <div class="vb-track"><div class="vb-fill dark" data-w="28"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIZ 3: SNAPCHAT DONUT -->
+  <div class="block reveal" id="viz3">
+    <div class="slabel">Snapchat · 7-Day Turnaround</div>
+    <div class="viz-snap">
+      <div class="vs-left">
+        <svg class="donut" viewBox="0 0 180 180">
+          <circle class="donut-bg" cx="90" cy="90" r="80"/>
+          <circle class="donut-val" id="donutArc" cx="90" cy="90" r="80" transform="rotate(-90 90 90)"/>
+          <text class="donut-label" x="90" y="84">222×</text>
+          <text class="donut-sub" x="90" y="100">viewer growth</text>
+          <text class="donut-sub" x="90" y="112">in 7 days</text>
+        </svg>
+      </div>
+      <div class="vs-right">
+        <div class="vs-stat">
+          <div class="vs-num">2.05K</div>
+          <div class="vs-lbl">Unique viewers<br>Jan 20 · Before</div>
+        </div>
+        <div class="vs-divider"></div>
+        <div class="vs-stat">
+          <div class="vs-num pink">456K</div>
+          <div class="vs-lbl">Unique viewers<br>Jan 27 · After</div>
+        </div>
+        <div class="vs-divider"></div>
+        <div class="vs-stat">
+          <div class="vs-num pink">+2.72K</div>
+          <div class="vs-lbl">New subscribers<br>added in one week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIZ 4: BUBBLE CHART -->
+  <div class="block reveal" id="viz4">
+    <div class="slabel">Top Content · Views by Platform</div>
+    <div class="viz-bubble">
+      <div class="vbub-header">
+        <div class="vbub-title">Bubble size = relative view volume</div>
+        <div class="vbub-legend">
+          <div class="leg-item"><div class="leg-dot" style="background:var(--pink)"></div>Facebook</div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--ink)"></div>Snapchat</div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--muted)"></div>YouTube</div>
+        </div>
+      </div>
+      <svg class="bubble-chart" viewBox="0 0 860 200" id="bubbleChart">
+        <!-- axis -->
+        <line class="bub-axis" x1="40" y1="180" x2="840" y2="180"/>
+        <text class="bub-axis-label" x="40" y="195">Content</text>
+
+        <!-- Celebrities Who (Facebook) - biggest -->
+        <circle class="bubble" id="b1" cx="160" cy="100" r="0" fill="#FFB3DA" opacity="0.85" data-r="72"/>
+        <text class="bubble-num" x="160" y="95">37M</text>
+        <text class="bubble-label" x="160" y="108">mins viewed</text>
+        <text class="bubble-platform" x="160" y="119">Facebook</text>
+        <text class="bub-axis-label" x="160" y="195" text-anchor="middle">Celebrities Who…</text>
+
+        <!-- Noisy Dish Snap show -->
+        <circle class="bubble" id="b2" cx="360" cy="110" r="0" fill="#eeeeee" opacity="0.95" data-r="58"/>
+        <text class="bubble-num" x="360" y="105" fill="#111111">400K</text>
+        <text class="bubble-label" x="360" y="118" fill="#888888">/week</text>
+        <text class="bubble-platform" x="360" y="129" fill="#FFB3DA">Snapchat</text>
+        <text class="bub-axis-label" x="360" y="195" text-anchor="middle">Tile &amp; Tagline Series</text>
+
+        <!-- Harry Styles YT -->
+        <circle class="bubble" id="b3" cx="560" cy="125" r="0" fill="#cccccc" opacity="0.9" data-r="42"/>
+        <text class="bubble-num" x="560" y="121">300K+</text>
+        <text class="bubble-label" x="560" y="132">reach</text>
+        <text class="bubble-platform" x="560" y="143">YouTube</text>
+        <text class="bub-axis-label" x="560" y="195" text-anchor="middle">Harry Styles Video</text>
+
+        <!-- 9.2M 1 min views -->
+        <circle class="bubble" id="b4" cx="740" cy="118" r="0" fill="#FFB3DA" opacity="0.6" data-r="48"/>
+        <text class="bubble-num" x="740" y="113">9.2M</text>
+        <text class="bubble-label" x="740" y="125">1-min views</text>
+        <text class="bubble-platform" x="740" y="136">Facebook</text>
+        <text class="bub-axis-label" x="740" y="195" text-anchor="middle">Celebrities Who… (1-min)</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- VIZ 5: YOUTUBE RINGS -->
+  <div class="block reveal" id="viz5">
+    <div class="slabel">YouTube · Full Window Performance</div>
+    <div class="viz-yt">
+      <div class="vy-cell">
+        <svg class="ring" viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-val" id="r1" cx="40" cy="40" r="35" transform="rotate(-90 40 40)" data-pct="85"/>
+          <text class="ring-center" x="40" y="37">1.17M</text>
+          <text class="ring-center-sub" x="40" y="48">views</text>
+        </svg>
+        <div class="vy-label">Total Views<br>Accumulated</div>
+      </div>
+      <div class="vy-cell">
+        <svg class="ring" viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-val dark" id="r2" cx="40" cy="40" r="35" transform="rotate(-90 40 40)" data-pct="70"/>
+          <text class="ring-center" x="40" y="37">15.2K</text>
+          <text class="ring-center-sub" x="40" y="48">hrs</text>
+        </svg>
+        <div class="vy-label">Watch Hours</div>
+      </div>
+      <div class="vy-cell">
+        <svg class="ring" viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-val" id="r3" cx="40" cy="40" r="35" transform="rotate(-90 40 40)" data-pct="92"/>
+          <text class="ring-center" x="40" y="37">800K+</text>
+          <text class="ring-center-sub" x="40" y="48">views</text>
+        </svg>
+        <div class="vy-label">View Growth<br>in 3 Months</div>
+      </div>
+      <div class="vy-cell">
+        <svg class="ring" viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-val dark" id="r4" cx="40" cy="40" r="35" transform="rotate(-90 40 40)" data-pct="100"/>
+          <text class="ring-center" x="40" y="37">✓</text>
+          <text class="ring-center-sub" x="40" y="48">monetized</text>
+        </svg>
+        <div class="vy-label">Monetization<br>Threshold Reached</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="viz-footer reveal">
+    <p>Kristil Rabideau</p>
+    <p>Jellysmack · The Noisy Dish · 2022–2023</p>
+    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="097b686b606d6c687c627b607a7d6065496e64686065276a6664">[email&#160;protected]</a></p>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    obs.unobserve(e.target);
+
+    const id = e.target.id;
+
+    // Line chart draw
+    if (id === 'viz1') {
+      setTimeout(() => {
+        const p = document.getElementById('growthPath');
+        if (p) p.classList.add('drawn');
+      }, 300);
+    }
+
+    // Bars
+    if (id === 'viz2') {
+      setTimeout(() => {
+        document.querySelectorAll('.vb-fill').forEach(b => {
+          b.style.width = b.dataset.w + '%';
+        });
+      }, 200);
+    }
+
+    // Donut
+    if (id === 'viz3') {
+      setTimeout(() => {
+        const arc = document.getElementById('donutArc');
+        if (arc) {
+          // circumference = 2πr = 2π×80 ≈ 503
+          // fill ~95% of circle to show "almost complete" growth
+          arc.style.strokeDashoffset = 503 * 0.05;
+        }
+      }, 300);
+    }
+
+    // Bubbles
+    if (id === 'viz4') {
+      ['b1','b2','b3','b4'].forEach((bid, i) => {
+        setTimeout(() => {
+          const b = document.getElementById(bid);
+          if (b) {
+            b.style.opacity = bid === 'b2' ? '0.85' : bid === 'b3' ? '0.9' : '0.85';
+            b.setAttribute('r', b.dataset.r);
+            b.style.transition = 'r 0.6s ease, opacity 0.6s ease';
+          }
+        }, i * 150 + 200);
+      });
+    }
+
+    // Rings
+    if (id === 'viz5') {
+      ['r1','r2','r3','r4'].forEach((rid, i) => {
+        setTimeout(() => {
+          const ring = document.getElementById(rid);
+          if (ring) {
+            const pct = parseFloat(ring.dataset.pct) / 100;
+            const circ = 220;
+            ring.style.strokeDashoffset = circ * (1 - pct);
+          }
+        }, i * 120 + 200);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.reveal, #viz1, #viz2, #viz3, #viz4, #viz5').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

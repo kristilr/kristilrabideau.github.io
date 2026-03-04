@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Kristil Rabideau</title>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --pink: #FFB3DA; --ink: #111111; --muted: #999999; --rule: #e8e8e8; }
+html, body { height: 100%; }
+body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; font-weight: 100; overflow: hidden; }
+.corner { position: fixed; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.9; z-index: 10; }
+.corner-tl { top: 1.75rem; left: 2.5rem; }
+.corner-tr { top: 1.75rem; right: 2.5rem; text-align: right; color: var(--pink); }
+.corner-bl { bottom: 1.75rem; left: 2.5rem; }
+.corner a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color 0.2s; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; }
+.corner a:hover { color: var(--pink); }
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 560px;
+  width: 100%;
+  padding: 0 2.5rem;
+}
+
+.about-label {
+  font-size: 0.55rem;
+  font-weight: 100;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.about-name {
+  font-family: 'GFS Didot', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2rem;
+}
+
+.about-body {
+  font-size: 0.95rem;
+  font-weight: 100;
+  line-height: 1.95;
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+}
+
+.about-body .pink { color: var(--pink); }
+
+.contact-row {
+  display: flex;
+  gap: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+}
+
+.contact-item { }
+.contact-label { font-size: 0.5rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; display: block; }
+.contact-val { font-size: 0.75rem; font-weight: 100; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+.contact-val:hover { color: var(--pink); }
+</style>
+</head>
+<body>
+
+<div class="corner corner-tl">Kristil Rabideau</div>
+<div class="corner corner-tr">About ·</div>
+<div class="corner corner-bl"><a href="index.html">← Home</a></div>
+
+<div class="center">
+  <span class="about-label">About Me</span>
+  <h1 class="about-name">Kristil Rabideau</h1>
+  <p class="about-body">
+    I'm a digital marketing strategist specializing in content creation, growth strategy, and video production. I immerse myself in current trends to <span class="pink">constantly improve</span> digital marketing technique and provide <span class="pink">data-driven results.</span><br><br>
+    Whether I'm writing scripts, crafting taglines, defining brand voice, or building content systems from scratch — I work closely with founders and teams to turn strategy into something measurable.
+  </p>
+  <div class="contact-row">
+    <div class="contact-item">
+      <span class="contact-label">Email</span>
+      <a class="contact-val" href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Phone</span>
+      <a class="contact-val" href="tel:0782295177">07 82 29 51 77</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">LinkedIn</span>
+      <a class="contact-val" href="#">Add URL</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

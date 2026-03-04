@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Kristil Rabideau</title>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --pink: #FFB3DA; --ink: #111111; --muted: #999999; --rule: #e8e8e8; }
+html, body { height: 100%; }
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  overflow: hidden;
+}
+
+.corner {
+  position: fixed;
+  font-size: 0.55rem;
+  font-weight: 100;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.9;
+}
+.corner-tl { top: 1.75rem; left: 2.5rem; }
+.corner-tr { top: 1.75rem; right: 2.5rem; text-align: right; color: var(--pink); }
+.corner-bl { bottom: 1.75rem; left: 2.5rem; }
+.corner a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--ink);
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 0.55rem;
+  font-weight: 100;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.corner a:hover { color: var(--pink); text-decoration-color: var(--pink); }
+
+/* CASE STUDY LIST */
+.cs-list {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 700px;
+  padding: 0 2.5rem;
+}
+
+.cs-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--ink);
+  transition: padding-left 0.25s ease;
+}
+.cs-item:first-child { border-top: 1px solid var(--rule); }
+.cs-item:hover { padding-left: 0.75rem; }
+.cs-item:hover .cs-name { color: var(--pink); }
+.cs-item:hover .cs-arrow { color: var(--pink); transform: translateX(4px); }
+
+.cs-left { display: flex; align-items: baseline; gap: 1.5rem; }
+
+.cs-num {
+  font-size: 0.55rem;
+  font-weight: 100;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  width: 1.5rem;
+}
+
+.cs-name {
+  font-family: 'GFS Didot', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+
+.cs-right { display: flex; align-items: baseline; gap: 2rem; }
+
+.cs-desc {
+  font-size: 0.6rem;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cs-arrow {
+  font-size: 0.8rem;
+  font-weight: 100;
+  color: var(--muted);
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+</style>
+</head>
+<body>
+
+<div class="corner corner-tl">Kristil Rabideau</div>
+<div class="corner corner-tr">Case Studies ·</div>
+<div class="corner corner-bl"><a href="index.html">← Home</a></div>
+
+<nav class="cs-list">
+  <a class="cs-item" href="jellysmack_viz.html">
+    <div class="cs-left">
+      <span class="cs-num">01</span>
+      <span class="cs-name">Jellysmack</span>
+    </div>
+    <div class="cs-right">
+      <span class="cs-desc">Scriptwriting · Video · Social Strategy</span>
+      <span class="cs-arrow">→</span>
+    </div>
+  </a>
+  <a class="cs-item" href="pers.html">
+    <div class="cs-left">
+      <span class="cs-num">02</span>
+      <span class="cs-name">PERS</span>
+    </div>
+    <div class="cs-right">
+      <span class="cs-desc">Content Strategy · Brand Voice</span>
+      <span class="cs-arrow">→</span>
+    </div>
+  </a>
+  <a class="cs-item" href="maison-toto.html">
+    <div class="cs-left">
+      <span class="cs-num">03</span>
+      <span class="cs-name">Maison Toto</span>
+    </div>
+    <div class="cs-right">
+      <span class="cs-desc">Social Management · Editorial</span>
+      <span class="cs-arrow">→</span>
+    </div>
+  </a>
+  <a class="cs-item" href="vawaa.html">
+    <div class="cs-left">
+      <span class="cs-num">04</span>
+      <span class="cs-name">VAWAA</span>
+    </div>
+    <div class="cs-right">
+      <span class="cs-desc">Content · Growth · Community</span>
+      <span class="cs-arrow">→</span>
+    </div>
+  </a>
+  <a class="cs-item" href="writers.html">
+    <div class="cs-left">
+      <span class="cs-num">05</span>
+      <span class="cs-name">Studio R–M</span>
+    </div>
+    <div class="cs-right">
+      <span class="cs-desc">Scriptwriting · Copywriting · Developmental Editing</span>
+      <span class="cs-arrow">→</span>
+    </div>
+  </a>
+  <a class="cs-item" href="film.html">
+    <div class="cs-left">
+      <span class="cs-num">↗</span>
+      <span class="cs-name">Film & Spec</span>
+    </div>
+    <div class="cs-right">
+      <span class="cs-desc">Selected Video Production Work</span>
+      <span class="cs-arrow">→</span>
+    </div>
+  </a>
+</nav>
+
+</body>
+</html>
