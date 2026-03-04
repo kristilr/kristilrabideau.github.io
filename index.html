@@ -4,133 +4,252 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kristil Rabideau</title>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --pink: #FFB3DA;
-  --ink: #111111;
-  --muted: #666666;
-}
-html, body { height: 100%; }
-body {
-  background: #fff;
-  color: var(--ink);
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  height: 100%;
-  overflow: hidden;
+  --ink: #2a2a2a;
+  --mid: #5a5a5a;
+  --muted: #999;
+  --pink: #e8a0c0;
+  --rule: #e0e0e0;
+  --sidebar: 195px;
+  --inset: 195px; /* right margin matches sidebar width for symmetry */
 }
 
-/* CORNERS */
-.corner {
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 300;
+  background: #fff;
+  color: var(--ink);
+}
+
+.layout { display: flex; height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar);
+  flex-shrink: 0;
+  height: 100vh;
   position: fixed;
-  font-size: 0.62rem;
+  left: 0; top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding: 2.2rem 1.5rem 2rem 0.75rem;
+  background: #fff;
+  z-index: 20;
+}
+
+.sidebar-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.sidebar-roles {
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-top: 0.9rem;
+}
+
+.sidebar-logo {
+  margin-top: 1.1rem;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.sidebar-link {
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: var(--mid);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.sidebar-link:hover { color: var(--ink); }
+
+/* ── SCROLL ── */
+.scroll-area {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+/* ── ENTRY ── */
+.entry {
+  padding: 2rem var(--inset) 0 var(--sidebar);
+}
+
+/* VIDEO — wide cinematic ratio */
+.entry-video {
+  width: 100%;
+  aspect-ratio: 21/9;
+  background: #111;
+  overflow: hidden;
+  position: relative;
+}
+.entry-video video {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.entry-video-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+.entry-video-ph span {
+  font-size: 0.48rem;
   font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  line-height: 1.9;
+  color: rgba(255,255,255,0.18);
 }
-.corner-tl { top: 1.75rem; left: 2.5rem; color: var(--ink); }
-.corner-tr {
-  top: 1.75rem; right: 2.5rem;
-  text-align: right;
-  color: var(--pink);
-}
-.corner-bl {
-  bottom: 1.75rem; left: 2.5rem;
-}
-.corner-br {
-  bottom: 1.75rem; right: 2.5rem;
-}
-.corner a {
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: var(--ink);
-  text-underline-offset: 3px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.corner a:hover { color: var(--pink); text-decoration-color: var(--pink); }
 
-/* CENTER CONTENT */
-.center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* ── CAPTION ── */
+.entry-caption {
+  padding: 0.75rem 0 2rem;
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--mid);
+  border-bottom: 1px solid var(--rule);
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
-.hero-name {
-  font-family: 'GFS Didot', serif;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.hero-dash {
-  font-family: 'GFS Didot', serif;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 100;
-  color: var(--ink);
-  flex-shrink: 0;
-  margin: 0 -0.5rem;
-}
-
-.hero-text {
-  font-size: 0.78rem;
-  font-weight: 100;
-  line-height: 1.9;
-  color: var(--ink);
-  text-align: justify;
-  max-width: 185px;
-  white-space: normal;
-}
-
-.hero-text .pink {
+.t-title { font-weight: 500; color: var(--ink); font-size: 0.72rem; letter-spacing: 0.03em; }
+.t-sep   { color: var(--rule); }
+.t-sub   { font-style: italic; color: var(--mid); }
+.t-cta   {
   color: var(--pink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--pink);
+  font-weight: 300;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
+.t-cta:hover { opacity: 0.6; }
+
+/* FOOTER */
+.site-footer {
+  padding: 1.25rem var(--inset) 3rem var(--sidebar);
+  font-size: 0.62rem;
+  font-weight: 300;
+  color: var(--muted);
+  text-align: center;
+}
+.site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover { color: var(--ink); }
 </style>
 </head>
 <body>
+<div class="layout">
 
-<!-- TOP LEFT -->
-<div class="corner corner-tl">
-  Digital Marketing //<br>
-  Content // Growth
+  <aside class="sidebar">
+    <div class="sidebar-name">KRISTIL<br>RABIDEAU</div>
+    <div class="sidebar-roles">
+      Content Creation<br>
+      Editorial Direction<br>
+      Social Management
+    </div>
+    <img src="logo.gif" class="sidebar-logo" alt="">
+    <a class="sidebar-link" href="about.html">→ Information</a>
+  </aside>
+
+  <main class="scroll-area">
+
+    <div class="entry">
+      <div class="entry-video">
+        <!-- <video src="jellysmack.mp4" autoplay muted loop playsinline></video> -->
+        <div class="entry-video-ph"><span>Jellysmack</span></div>
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">JELLYSMACK</span><span class="t-sep">|</span>
+        <span class="t-sub">Multi-Channel Social Growth + Platform Management</span><span class="t-sep">|</span>
+        <a class="t-cta" href="jellysmack_viz.html">See the results →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-video">
+        <!-- <video src="pers.mp4" autoplay muted loop playsinline></video> -->
+        <div class="entry-video-ph"><span>PERS</span></div>
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">PERS</span><span class="t-sep">|</span>
+        <span class="t-sub">Beauty Brand Launch + Social Growth</span><span class="t-sep">|</span>
+        <a class="t-cta" href="pers.html">See the results →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-video">
+        <!-- <video src="maison-toto.mp4" autoplay muted loop playsinline></video> -->
+        <div class="entry-video-ph"><span>Maison Toto</span></div>
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">MAISON TOTO</span><span class="t-sep">|</span>
+        <span class="t-sub">Artisanal Restaurant Launch + Social Growth</span><span class="t-sep">|</span>
+        <a class="t-cta" href="maison-toto.html">See the results →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-video" style="background:#f0eef8;">
+        <div class="entry-video-ph"><span style="color:#9B8FBF;opacity:0.5;">VAWAA · Email Marketing · Pipeline Management</span></div>
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">VAWAA</span><span class="t-sep">|</span>
+        <span class="t-sub">Email Marketing + Full Customer Pipeline</span><span class="t-sep">|</span>
+        <a class="t-cta" href="vawaa.html">See the results →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-video" style="background:#1c1c1c;">
+        <div class="entry-video-ph" style="flex-direction:column;gap:0.5rem;">
+          <span style="font-size:0.52rem;letter-spacing:0.22em;">STUDIO R–M</span>
+          <span style="font-size:0.4rem;letter-spacing:0.12em;color:rgba(255,255,255,0.13);">NYT · Washington Post · Newsweek · HuffPost · Reader's Digest · Salon · Wired</span>
+        </div>
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">STUDIO R–M</span><span class="t-sep">|</span>
+        <span class="t-sub">Scriptwriting, Copywriting + Developmental Editing</span><span class="t-sep">|</span>
+        <a class="t-cta" href="writers.html">See the results →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-video" style="background:#0d0d0d;">
+        <div class="entry-video-ph"><span style="font-size:0.4rem;letter-spacing:0.16em;color:rgba(255,255,255,0.13);">Nike Boxing · Setting Things on Fire · City of Love</span></div>
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">FILM & SPEC</span><span class="t-sep">|</span>
+        <span class="t-sub">Selected Video Production Work</span><span class="t-sep">|</span>
+        <a class="t-cta" href="film.html">See the work →</a>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <a href="mailto:rabideaukristil@gmail.com">rabideaukristil@gmail.com</a> &nbsp;·&nbsp;
+      <a href="tel:+13192808530">+1 319 280 8530</a>
+    </footer>
+
+  </main>
 </div>
-
-<!-- TOP RIGHT -->
-<div class="corner corner-tr">
-  Data-Driven Results ·<br>
-  +<br>
-  Real Numbers ·
-</div>
-
-<!-- CENTER -->
-<div class="center">
-  <span class="hero-name">kristil rabideau</span>
-  <span class="hero-dash"> —</span>
-  <div class="hero-text">
-    I immerse myself in current trends to <span class="pink">constantly improve</span> digital marketing technique and provide <span class="pink">data-driven results.</span>
-  </div>
-</div>
-
-<!-- BOTTOM LEFT -->
-<div class="corner corner-bl">
-  <a href="case-studies.html">Case Studies</a>
-</div>
-
-<!-- BOTTOM RIGHT -->
-<div class="corner corner-br">
-  <a href="about.html">About Me</a>
-</div>
-
 </body>
 </html>

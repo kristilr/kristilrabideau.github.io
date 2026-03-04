@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jellysmack · By The Numbers</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -13,14 +13,14 @@
   --rule: #e8e8e8;
   --muted: #666666;
   --dim: #555555;
-  --ink: #111111;
+  --ink: #2a2a2a;
   --pink: #FFB3DA;
   --r: 'Roboto', sans-serif;
 }
 body {
   background: var(--white);
   color: var(--ink);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 100;
 }
 .wrap { max-width: 960px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
@@ -34,13 +34,13 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
-.hd-title { font-size: 1.5rem; font-weight: 300; letter-spacing: 0.08em; }
+.hd-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.08em; }
 .hd-title span { color: var(--pink); }
-.hd-meta { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); text-align: right; line-height: 2; }
+.hd-meta { font-size: 0.84rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); text-align: right; line-height: 2; }
 
 /* SECTION LABEL */
 .slabel {
-  font-size: 0.55rem;
+  font-size: 0.76rem;
   font-weight: 300;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -69,10 +69,10 @@ body {
 }
 .vgh-stat { }
 .vgh-num { font-size: 3.5rem; font-weight: 100; letter-spacing: -0.04em; color: var(--pink); line-height: 1; }
-.vgh-label { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.25rem; }
+.vgh-label { font-size: 0.84rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.25rem; }
 .vgh-note { font-size: 0.75rem; font-weight: 300; color: var(--dim); max-width: 260px; text-align: right; line-height: 1.7; }
 svg.line-chart { width: 100%; height: 160px; overflow: visible; }
-.chart-label { font-family: 'Roboto', sans-serif; font-size: 9px; font-weight: 100; fill: var(--dim); letter-spacing: 0.08em; }
+.chart-label { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 100; fill: var(--dim); letter-spacing: 0.08em; }
 .axis-line { stroke: var(--rule); stroke-width: 1; }
 .data-line { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 800; stroke-dashoffset: 800; transition: stroke-dashoffset 2s ease; }
 .data-line.pink { stroke: var(--pink); stroke-width: 2; }
@@ -97,12 +97,12 @@ svg.line-chart { width: 100%; height: 160px; overflow: visible; }
 }
 .vb-big { font-size: 4rem; font-weight: 100; letter-spacing: -0.04em; color: var(--pink); line-height: 1; }
 .vb-pct { font-size: 2rem; font-weight: 100; color: var(--pink); }
-.vb-sub { font-size: 0.58rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; line-height: 1.7; }
+.vb-sub { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; line-height: 1.7; }
 .vb-right { padding: 2rem 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; justify-content: center; }
 .vb-row { }
 .vb-meta { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
-.vb-name { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
-.vb-val { font-size: 0.6rem; font-weight: 300; color: var(--dim); }
+.vb-name { font-size: 0.84rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.vb-val { font-size: 0.84rem; font-weight: 300; color: var(--dim); }
 .vb-track { height: 2px; background: var(--rule); position: relative; }
 .vb-fill { position: absolute; top: 0; left: 0; height: 2px; background: var(--pink); width: 0%; transition: width 1.4s cubic-bezier(0.4,0,0.2,1); }
 .vb-fill.dark { background: var(--ink); }
@@ -133,12 +133,12 @@ svg.line-chart { width: 100%; height: 160px; overflow: visible; }
 svg.donut { width: 180px; height: 180px; }
 .donut-bg { fill: none; stroke: var(--rule); stroke-width: 10; }
 .donut-val { fill: none; stroke: var(--pink); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 503; stroke-dashoffset: 503; transition: stroke-dashoffset 1.8s ease; }
-.donut-label { font-family: 'Roboto', sans-serif; font-size: 28px; font-weight: 100; fill: var(--ink); text-anchor: middle; }
-.donut-sub { font-family: 'Roboto', sans-serif; font-size: 8px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.15em; text-transform: uppercase; }
+.donut-label { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 100; fill: var(--ink); text-anchor: middle; }
+.donut-sub { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.15em; text-transform: uppercase; }
 .vs-stat { }
 .vs-num { font-size: 2.4rem; font-weight: 100; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
 .vs-num.pink { color: var(--pink); }
-.vs-lbl { font-size: 0.58rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.25rem; line-height: 1.6; }
+.vs-lbl { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.25rem; line-height: 1.6; }
 .vs-divider { height: 1px; background: var(--rule); }
 
 /* ── VIZ 4: SCATTER / BUBBLE CHART (top content) ── */
@@ -147,18 +147,18 @@ svg.donut { width: 180px; height: 180px; }
   padding: 2.5rem;
 }
 .vbub-header { margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
-.vbub-title { font-size: 0.55rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+.vbub-title { font-size: 0.76rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
 .vbub-legend { display: flex; gap: 1.5rem; align-items: center; }
-.leg-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.1em; color: var(--dim); text-transform: uppercase; }
+.leg-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.76rem; font-weight: 300; letter-spacing: 0.1em; color: var(--dim); text-transform: uppercase; }
 .leg-dot { width: 8px; height: 8px; border-radius: 50%; }
 svg.bubble-chart { width: 100%; height: 200px; }
 .bubble { opacity: 0; transition: opacity 0.5s ease, r 0.3s ease; cursor: default; }
 .bubble:hover { opacity: 1 !important; }
-.bubble-label { font-family: 'Roboto', sans-serif; font-size: 8.5px; font-weight: 100; fill: var(--ink); text-anchor: middle; letter-spacing: 0.06em; }
-.bubble-num { font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 300; fill: var(--ink); text-anchor: middle; }
-.bubble-platform { font-family: 'Roboto', sans-serif; font-size: 7px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.08em; text-transform: uppercase; }
+.bubble-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 100; fill: var(--ink); text-anchor: middle; letter-spacing: 0.06em; }
+.bubble-num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 300; fill: var(--ink); text-anchor: middle; }
+.bubble-platform { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.08em; text-transform: uppercase; }
 .bub-axis { stroke: var(--rule); stroke-width: 1; }
-.bub-axis-label { font-family: 'Roboto', sans-serif; font-size: 8px; font-weight: 100; fill: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.bub-axis-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 100; fill: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
 /* ── VIZ 5: YOUTUBE PROGRESS RINGS ── */
 .viz-yt {
@@ -180,14 +180,14 @@ svg.ring { width: 80px; height: 80px; }
 .ring-bg { fill: none; stroke: var(--rule); stroke-width: 5; }
 .ring-val { fill: none; stroke: var(--pink); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 220; stroke-dashoffset: 220; transition: stroke-dashoffset 1.5s ease; }
 .ring-val.dark { stroke: var(--ink); }
-.ring-center { font-family: 'Roboto', sans-serif; font-size: 11px; font-weight: 100; fill: var(--ink); text-anchor: middle; }
-.ring-center-sub { font-family: 'Roboto', sans-serif; font-size: 7px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.05em; }
+.ring-center { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 100; fill: var(--ink); text-anchor: middle; }
+.ring-center-sub { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 100; fill: var(--dim); text-anchor: middle; letter-spacing: 0.05em; }
 .vy-num { font-size: 1.8rem; font-weight: 300; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
-.vy-label { font-size: 0.58rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); line-height: 1.6; }
+.vy-label { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); line-height: 1.6; }
 
 /* FOOTER */
 .viz-footer { border-top: 1px solid var(--rule); padding-top: 1rem; display: flex; justify-content: space-between; }
-.viz-footer p { font-size: 0.55rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.viz-footer p { font-size: 0.76rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
 
 /* REVEAL */
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
