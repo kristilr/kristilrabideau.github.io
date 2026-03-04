@@ -4,95 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Film & Spec — Kristil Rabideau</title>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --ink: #111111; --muted: #666666; --rule: #e8e8e8; --off: #f4f4f4; }
+:root { --ink: #111111; --muted: #666666; --rule: #e8e8e8; --off: #f4f4f4; --accent: #FFB3DA; }
 html, body { min-height: 100%; }
-body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; font-weight: 100; }
+body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; font-weight: 300; }
 
-.corner { position: fixed; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.9; z-index: 10; }
-.corner-tl { top: 1.75rem; left: 2.5rem; }
-.corner-tr { top: 1.75rem; right: 2.5rem; text-align: right; color: var(--muted); }
-.corner-bl { bottom: 1.75rem; left: 2.5rem; }
-.corner-br { bottom: 1.75rem; right: 2.5rem; }
-.corner a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color 0.2s; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; }
-.corner a:hover { color: var(--muted); }
 
 .page { max-width: 780px; margin: 0 auto; padding: 7rem 2.5rem 8rem; }
 
 /* PAGE HEADER */
 .pg-header { margin-bottom: 5rem; border-bottom: 1px solid var(--rule); padding-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end; }
-.pg-title { font-family: 'GFS Didot', serif; font-size: 2rem; font-weight: 400; letter-spacing: -0.02em; }
-.pg-note { font-size: 0.6rem; font-weight: 100; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: right; line-height: 1.9; max-width: 220px; }
+.pg-title { font-family: 'Roboto', sans-serif; font-size: 2rem; font-weight: 400; letter-spacing: -0.02em; }
+.pg-note { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: right; line-height: 1.9; max-width: 220px; }
 
 /* FILM ENTRY */
 .film-entry { margin-bottom: 5.5rem; }
 .film-entry:last-child { margin-bottom: 0; }
 
-.film-video {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #111;
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.film-video video { width: 100%; height: 100%; object-fit: cover; }
-.film-video-ph {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-.film-video-ph-icon { font-size: 2rem; color: rgba(255,255,255,0.2); }
-.film-video-ph-text { font-size: 0.5rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
-.film-caption { font-size: 0.52rem; font-weight: 100; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: right; margin-bottom: 2rem; }
 
 .film-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 
 .film-left { }
 .film-name { font-size: 0.65rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.25rem; }
-.film-type { font-family: 'GFS Didot', serif; font-style: italic; font-size: 1rem; color: var(--muted); margin-bottom: 1.25rem; }
-.film-roles { font-size: 0.6rem; font-weight: 100; letter-spacing: 0.08em; color: var(--muted); line-height: 2; }
+.film-type { font-family: 'Roboto', sans-serif; font-style: italic; font-size: 1rem; color: var(--muted); margin-bottom: 1.25rem; }
+.film-roles { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.08em; color: var(--muted); line-height: 2; }
 .film-roles span { color: var(--ink); }
 
 .film-right { }
-.film-desc { font-size: 0.82rem; font-weight: 100; line-height: 1.85; color: var(--ink); margin-bottom: 1rem; }
-.film-note { font-size: 0.72rem; font-weight: 100; font-style: italic; line-height: 1.8; color: var(--muted); }
+.film-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.85; color: var(--ink); margin-bottom: 1rem; }
+.film-note { font-size: 0.72rem; font-weight: 300; font-style: italic; line-height: 1.8; color: var(--muted); }
 
+
+/* VIDEO */
+.film-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #111;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.film-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.film-video-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 200px;
+}
+.film-video-ph span {
+  font-size: 0.5rem; font-weight: 300; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(255,255,255,0.2);
+}
 /* DIVIDER */
 .divider { height: 1px; background: var(--rule); margin-bottom: 5.5rem; }
 </style>
 </head>
 <body>
 
-<div class="corner corner-tl"><a href="index.html" style="text-decoration:none;color:inherit;">Kristil Rabideau</a></div>
-<div class="corner corner-tr">Film & Spec ·</div>
-<div class="corner corner-bl"><a href="case-studies.html">← Case Studies</a></div>
 
 <div class="page">
 
   <div class="pg-header">
     <h1 class="pg-title">Film & Spec</h1>
-    <div class="pg-note">Selected video production work — personal projects and spec work outside of client campaigns.</div>
+    <div class="pg-note">Selected video production work.</div>
   </div>
 
   <!-- NIKE BOXING -->
   <div class="film-entry">
     <div class="film-video">
-      <!-- <video src="nike-boxing.mp4" autoplay muted loop playsinline></video> -->
-      <div class="film-video-ph">
-        <div class="film-video-ph-icon">▶</div>
-        <div class="film-video-ph-text">Drop Nike Boxing video here</div>
-      </div>
+      <!-- <video src="nike-boxing.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+      <div class="film-video-ph"><span>Nike Boxing</span></div>
     </div>
-    <div class="film-caption">Audio removed for portfolio purposes. Full version available upon request.</div>
-    <div class="film-body">
+        <div class="film-body">
       <div class="film-left">
         <div class="film-name">Nike Boxing</div>
         <div class="film-type">Spec Brand Commercial</div>
@@ -102,7 +86,6 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
       </div>
       <div class="film-right">
         <p class="film-desc">High-intensity branded spot cut during an advanced editing lab led by a Nike commercial editor. Rebuilt the voiceover using unrelated interview material, layered original sound design, and added bold type, motion graphics, and custom color grading to channel Nike's trademark pacing and aesthetic.</p>
-        <p class="film-note">Video shortened for portfolio purposes. Full version available upon request.</p>
       </div>
     </div>
   </div>
@@ -113,13 +96,9 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   <div class="film-entry">
     <div class="film-video">
       <!-- <video src="setting-things-on-fire.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
-      <div class="film-video-ph">
-        <div class="film-video-ph-icon">▶</div>
-        <div class="film-video-ph-text">Drop Setting Things on Fire video here</div>
-      </div>
+      <div class="film-video-ph"><span>Setting Things on Fire</span></div>
     </div>
-    <div class="film-caption">Video shortened for portfolio purposes. Full version available upon request.</div>
-    <div class="film-body">
+        <div class="film-body">
       <div class="film-left">
         <div class="film-name">Setting Things on Fire</div>
         <div class="film-type">Spec Music Video</div>
@@ -129,7 +108,6 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
       </div>
       <div class="film-right">
         <p class="film-desc">Music video for <em>Setting Things on Fire</em>, created for emerging artist Eurora. Built around dreamlike pacing and symbolic imagery to enhance the project's emotional and narrative core.</p>
-        <p class="film-note">Video shortened for portfolio purposes. Full version available upon request.</p>
       </div>
     </div>
   </div>
@@ -139,14 +117,10 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   <!-- CITY OF LOVE -->
   <div class="film-entry">
     <div class="film-video">
-      <!-- <video src="city-of-love.mp4" autoplay muted loop playsinline></video> -->
-      <div class="film-video-ph">
-        <div class="film-video-ph-icon">▶</div>
-        <div class="film-video-ph-text">Drop City of Love video here</div>
-      </div>
+      <!-- <video src="city-of-love.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video> -->
+      <div class="film-video-ph"><span>City of Love</span></div>
     </div>
-    <div class="film-caption">Audio removed for portfolio purposes. Full version available upon request.</div>
-    <div class="film-body">
+        <div class="film-body">
       <div class="film-left">
         <div class="film-name">City of Love</div>
         <div class="film-type">Short-Form Documentary</div>
@@ -156,7 +130,6 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
       </div>
       <div class="film-right">
         <p class="film-desc">Short documentary shot in Montmartre, exploring intimacy and relationships through street interviews with neighbors and strangers. Built from unscheduled, time-of-day-inconsistent footage, the film demanded adaptive storytelling and intuitive pacing.</p>
-        <p class="film-note">Unified scattered moments into an emotionally resonant whole using editing, sound, and color as connective tissue. Video shortened for portfolio purposes. Full version available upon request.</p>
       </div>
     </div>
   </div>

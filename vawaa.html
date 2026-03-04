@@ -4,30 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAWAA — Kristil Rabideau</title>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --accent: #9B8FBF;
-  --accent-light: #f5f3fb;
+  --accent: #FFB3DA;
+  --accent-light: #fff0f7;
   --ink: #111111;
   --muted: #666666;
   --rule: #e8e8e8;
 }
 html, body { min-height: 100%; }
-body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; font-weight: 100; }
-.corner { position: fixed; font-size: 0.62rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.9; z-index: 10; }
-.corner-tl { top: 1.75rem; left: 2.5rem; }
-.corner-tr { top: 1.75rem; right: 2.5rem; text-align: right; color: var(--accent); }
-.corner-bl { bottom: 1.75rem; left: 2.5rem; }
-.corner-br { bottom: 1.75rem; right: 2.5rem; }
-.corner a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color 0.2s; font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; }
-.corner a:hover { color: var(--accent); }
+body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; font-weight: 300; }
 .page { max-width: 780px; margin: 0 auto; padding: 7rem 2.5rem 8rem; }
-.cs-num { font-size: 0.55rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block; }
-.cs-title { font-family: 'GFS Didot', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 400; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 1.5rem; }
+.cs-num { font-size: 0.55rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block; }
+.cs-title { font-family: 'Roboto', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 400; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 1.5rem; }
 .cs-title em { font-style: italic; color: var(--accent); }
-.cs-meta { font-size: 0.6rem; font-weight: 100; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); line-height: 2; }
+.cs-meta { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); line-height: 2; }
 .cs-header { margin-bottom: 5rem; }
 
 /* PIPELINE VISUAL */
@@ -46,7 +39,7 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
 .pipeline-stage.active { background: var(--accent-light); }
 .pipeline-stage-label {
   font-size: 0.5rem;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
@@ -54,7 +47,7 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   margin-bottom: 0.75rem;
 }
 .pipeline-stage-title {
-  font-family: 'GFS Didot', serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--ink);
@@ -63,7 +56,7 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
 }
 .pipeline-stage-desc {
   font-size: 0.7rem;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -79,16 +72,16 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   padding: 0 2px;
 }
 .pipeline-stage.active .pipeline-arrow { background: var(--accent-light); }
-.pipeline-caption { font-size: 0.52rem; font-weight: 100; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: right; margin-bottom: 4.5rem; }
+.pipeline-caption { font-size: 0.52rem; font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: right; margin-bottom: 4.5rem; }
 
-.cs-intro { font-size: 1.05rem; font-weight: 100; line-height: 1.9; color: var(--ink); max-width: 560px; margin-bottom: 4rem; border-top: 1px solid var(--rule); padding-top: 2.5rem; }
+.cs-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.9; color: var(--ink); max-width: 560px; margin-bottom: 4rem; border-top: 1px solid var(--rule); padding-top: 2.5rem; }
 .cs-intro .a { color: var(--accent); }
 
 .role-strip { display: flex; border: 1px solid var(--rule); margin-bottom: 4rem; }
 .role-item { flex: 1; padding: 1.25rem 1.5rem; border-right: 1px solid var(--rule); }
 .role-item:last-child { border-right: none; }
-.role-label { font-size: 0.5rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.35rem; }
-.role-val { font-size: 0.7rem; font-weight: 100; letter-spacing: 0.04em; color: var(--ink); line-height: 1.6; }
+.role-label { font-size: 0.5rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.35rem; }
+.role-val { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.04em; color: var(--ink); line-height: 1.6; }
 
 /* METRICS STRIP */
 .metrics {
@@ -103,7 +96,7 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   padding: 1.75rem 1.5rem;
 }
 .metric-num {
-  font-family: 'GFS Didot', serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   font-weight: 400;
   letter-spacing: -0.03em;
@@ -113,7 +106,7 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
 }
 .metric-label {
   font-size: 0.58rem;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -123,23 +116,19 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
 .wins { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); margin-bottom: 4rem; }
 .win-cell { background: #fff; padding: 2.5rem 2rem; transition: background 0.2s; }
 .win-cell:hover { background: var(--accent-light); }
-.win-label { font-size: 0.52rem; font-weight: 100; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: block; }
-.win-title { font-family: 'GFS Didot', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.6rem; }
-.win-desc { font-size: 0.78rem; font-weight: 100; line-height: 1.75; color: var(--muted); }
+.win-label { font-size: 0.52rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; display: block; }
+.win-title { font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.6rem; }
+.win-desc { font-size: 0.78rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
 
 .pullquote { border-left: 2px solid var(--accent); padding-left: 2rem; margin-bottom: 4rem; }
-.pullquote p { font-family: 'GFS Didot', serif; font-size: 1.1rem; font-style: italic; line-height: 1.65; color: var(--ink); }
-.pullquote cite { display: block; margin-top: 0.75rem; font-size: 0.52rem; font-weight: 100; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-style: normal; }
+.pullquote p { font-family: 'Roboto', sans-serif; font-size: 1.1rem; font-style: italic; line-height: 1.65; color: var(--ink); }
+.pullquote cite { display: block; margin-top: 0.75rem; font-size: 0.52rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-style: normal; }
 </style>
 </head>
 <body>
-<div class="corner corner-tl"><a href="index.html" style="text-decoration:none;color:inherit;">Kristil Rabideau</a></div>
-<div class="corner corner-tr">04 · VAWAA ·</div>
-<div class="corner corner-bl"><a href="case-studies.html">← Case Studies</a></div>
 <div class="page">
 
   <div class="cs-header">
-    <span class="cs-num">04 — Case Study</span>
     <h1 class="cs-title"><em>VAWAA</em></h1>
     <div class="cs-meta">Email Marketing · CRM · Lead Nurturing · Pipeline Management · SOPs</div>
   </div>
@@ -225,6 +214,5 @@ body { background: #fff; color: var(--ink); font-family: 'Roboto', sans-serif; f
   </div>
 
 </div>
-<div class="corner corner-br"><a href="writers.html">Studio R–M →</a></div>
 </body>
 </html>
