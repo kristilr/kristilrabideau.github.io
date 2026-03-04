@@ -74,6 +74,18 @@ html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-
   z-index: 99999;
   transform: translate(-50%, -50%);
   will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+.ink-drop.hovering {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1.5px solid #e8a0c0;
+  animation: ink-pulse 0.9s ease-in-out infinite;
+}
+@keyframes ink-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 0.5; }
 }
 </style>
 </head>
@@ -94,7 +106,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-
         <p>At Jellysmack, scaled social channels from zero to viral through data-driven content strategy and A/B testing. Through Studio R–M, create scripts and copy for digital brands and provide developmental editing for writers published in The New York Times and Newsweek. Run <a href="https://lemetro.substack.com" target="_blank" style="color:var(--pink);text-decoration:underline;text-underline-offset:3px;">LE MÉTRO</a>, a Substack publication exploring literature and culture through close reading and critique.</p>
         <p>I approach projects with both editorial rigor and strategic thinking: shaping narratives, optimizing platform-native content, and producing work that resonates with audiences and meets performance goals.</p>
         <p>Academic background includes a BA in Literature & Creative Writing from Columbia and MAs from Uppsala University and the American University of Paris.</p>
-        <p>Seeking roles in publishing, editorial content, or content marketing where storytelling, audience engagement, and strategic thinking intersect.</p>
+        <p>Seeking roles in social media management, editorial content, or content marketing where storytelling, audience engagement, and strategic thinking intersect — with a particular interest in digital media and platform-native brand building.</p>
       </div>
       <div class="contact-row">
         <div>
@@ -121,6 +133,12 @@ html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-
   document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
   document.addEventListener('mouseleave', () => drop.style.opacity = '0');
   document.addEventListener('mouseenter', () => drop.style.opacity = '1');
+
+  const interactables = 'a, button, .win-cell, .fs-cell, .skill-cell, .content-cell, .pillar-cell, .mandate-line, .format-row, .pub-row, .entry-video, .film-entry, .rb-cell, .qoq-cell, .lift-cell, .tl-item';
+  document.querySelectorAll(interactables).forEach(el => {
+    el.addEventListener('mouseenter', () => drop.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => drop.classList.remove('hovering'));
+  });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 

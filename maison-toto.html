@@ -132,6 +132,18 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   z-index: 99999;
   transform: translate(-50%, -50%);
   will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+.ink-drop.hovering {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1.5px solid #e8a0c0;
+  animation: ink-pulse 0.9s ease-in-out infinite;
+}
+@keyframes ink-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 0.5; }
 }
 </style>
 </head>
@@ -150,7 +162,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 
   <div class="cs-header">
     <h1 class="cs-title">Maison <em>Toto</em></h1>
-    <div class="cs-meta">Artisanal Restaurant Launch · Content Strategy · DP · Editor · Colorist · Instagram</div>
+    <div class="cs-meta">Artisanal Restaurant Launch · Instagram Content Strategy · DP · Editor · Colorist</div>
     <div style="margin-top:1rem;font-size:0.68rem;font-weight:300;color:#666;letter-spacing:0.08em;">
       See on <a href="https://www.instagram.com/maisontotoparis/?hl=en" target="_blank" style="color:#e8a0c0;text-decoration:underline;text-underline-offset:3px;">Instagram</a>
     </div>
@@ -158,7 +170,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 
 
   <p class="cs-intro">
-    Doubled local sales in six weeks by defining brand voice, designing a cross-platform content strategy, and building a scalable posting workflow that maximized organic reach. Scripted, shot, edited, and graded <span class="a">social-first videos</span> that translated the chef's California-meets-Paris brand into a consistent digital presence.
+    Doubled local sales in six weeks by defining brand voice, designing an Instagram-first content strategy, and building a scalable posting workflow that maximized organic reach. Scripted, shot, edited, and graded <span class="a">social-first videos</span> that translated the chef's California-meets-Paris brand into a consistent digital presence.
   </p>
 
   <div class="role-strip">
@@ -258,7 +270,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   </div>
 
   <div class="pullquote">
-    <p>Then executed full production and post-production: shot, edited, and graded social-first videos that translated the chef's California-meets-Paris brand into a consistent digital presence.</p>
+    <p>Six weeks. Zero existing presence. A distinct brand voice, a full content library, and doubled local sales — built on strategy and a clear visual identity.</p>
     <cite>Artisanal Restaurant Launch · Instagram</cite>
   </div>
 
@@ -282,6 +294,12 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
   document.addEventListener('mouseleave', () => drop.style.opacity = '0');
   document.addEventListener('mouseenter', () => drop.style.opacity = '1');
+
+  const interactables = 'a, button, .win-cell, .fs-cell, .skill-cell, .content-cell, .pillar-cell, .mandate-line, .format-row, .pub-row, .entry-video, .film-entry, .rb-cell, .qoq-cell, .lift-cell, .tl-item';
+  document.querySelectorAll(interactables).forEach(el => {
+    el.addEventListener('mouseenter', () => drop.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => drop.classList.remove('hovering'));
+  });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 

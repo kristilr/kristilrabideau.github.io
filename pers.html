@@ -77,28 +77,90 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 .page-nav .nav-pink { color: var(--pink, #e8a0c0); }
 .page-nav .nav-pink:hover { opacity: 0.7; }
 
-/* ── PLATFORM BAR CHART ── */
-.chart-section { margin-bottom: 4rem; }
-.chart-title-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
-.chart-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
-.chart-note { font-size: 0.68rem; font-weight: 300; color: var(--muted); font-style: italic; }
-.bar-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
-.bar-platform { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); width: 120px; flex-shrink: 0; }
-.bar-track { flex: 1; height: 2px; background: var(--rule); position: relative; }
-.bar-fill { height: 100%; background: var(--accent); transform-origin: left; animation: growBar 1.2s ease forwards; }
-.bar-fill.delay1 { animation-delay: 0.1s; }
-.bar-fill.delay2 { animation-delay: 0.2s; }
-.bar-fill.delay3 { animation-delay: 0.3s; }
-@keyframes growBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.bar-val { font-size: 0.72rem; font-weight: 400; color: var(--ink); width: 60px; text-align: right; flex-shrink: 0; }
-.bar-sub { font-size: 0.62rem; font-weight: 300; color: var(--muted); }
+/* ── STRATEGIC VIZ ── */
 
-/* ── CONTENT TYPE GRID ── */
-.content-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); margin-bottom: 4rem; }
-.content-cell { background: #fff; padding: 1.5rem 1.25rem; }
-.content-cell:hover { background: var(--accent-light); }
-.content-type { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; display: block; }
-.content-desc { font-size: 0.78rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+/* MANDATE BLOCK */
+.mandate {
+  border: 1px solid var(--rule);
+  padding: 2rem 2.5rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+.mandate-label {
+  font-size: 0.55rem; font-weight: 400; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+  display: block; margin-bottom: 1.25rem;
+}
+.mandate-line {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 0.65rem 0; border-bottom: 1px solid var(--rule);
+  font-size: 0.88rem; font-weight: 300; color: var(--ink);
+}
+.mandate-line:last-child { border-bottom: none; }
+.mandate-line::before {
+  content: '→';
+  color: var(--accent);
+  font-size: 0.68rem;
+  flex-shrink: 0;
+}
+
+/* CONTENT PILLARS */
+.pillars {
+  margin-bottom: 4rem;
+}
+.pillars-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--rule); padding-top: 1.5rem; margin-bottom: 1.75rem;
+}
+.pillars-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.pillars-note { font-size: 0.68rem; font-weight: 300; color: var(--muted); font-style: italic; }
+.pillar-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule);
+}
+.pillar-cell {
+  background: #fff; padding: 1.75rem 1.5rem;
+  transition: background 0.2s;
+}
+.pillar-cell:hover { background: var(--accent-light); }
+.pillar-num {
+  font-size: 0.55rem; font-weight: 400; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+  display: block; margin-bottom: 0.6rem;
+}
+.pillar-name {
+  font-size: 0.95rem; font-weight: 500; color: var(--ink);
+  margin-bottom: 0.4rem; line-height: 1.2;
+}
+.pillar-desc {
+  font-size: 0.75rem; font-weight: 300; color: var(--muted); line-height: 1.6;
+}
+
+/* REPEATABLE FORMATS */
+.formats {
+  margin-bottom: 4rem;
+  border-top: 1px solid var(--rule); padding-top: 1.5rem;
+}
+.formats-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+.formats-label { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.format-row {
+  display: grid; grid-template-columns: 160px 1fr 100px;
+  align-items: baseline; padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule); gap: 1.5rem;
+}
+.format-row:last-child { border-bottom: none; }
+.format-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+.format-desc { font-size: 0.78rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.format-platform { font-size: 0.62rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-align: right; }
+
+
+
+
+
+
 
 
 /* horizontal bar */
@@ -128,6 +190,18 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   z-index: 99999;
   transform: translate(-50%, -50%);
   will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+.ink-drop.hovering {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1.5px solid #e8a0c0;
+  animation: ink-pulse 0.9s ease-in-out infinite;
+}
+@keyframes ink-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 0.5; }
 }
 </style>
 </head>
@@ -174,51 +248,80 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   </div>
 
 
-  <!-- PLATFORM PERFORMANCE CHART -->
-  <div class="chart-section">
-    <div class="chart-title-row">
-      <span class="chart-label">Platform Performance</span>
-      <span class="chart-note">Organic reach · launch window</span>
+  <!-- FOUNDER MANDATE -->
+  <div class="mandate">
+    <span class="mandate-label">Founder Mandate · What I was trusted to own</span>
+    <div class="mandate-line">Define the brand voice and visual language from zero — no existing identity to reference</div>
+    <div class="mandate-line">Develop content pillars that could sustain a consistent posting rhythm long-term</div>
+    <div class="mandate-line">Create repeatable formats the founder could execute independently after handoff</div>
+    <div class="mandate-line">Handle all asset creation — scripting, shooting, editing, and color grading — solo</div>
+    <div class="mandate-line">Translate clinical skincare positioning into content that felt human and platform-native</div>
+  </div>
+
+  <!-- CONTENT PILLARS -->
+  <div class="pillars">
+    <div class="pillars-header">
+      <span class="pillars-label">Content Pillars</span>
+      <span class="pillars-note">Developed for sustained posting rhythm</span>
     </div>
-    <div class="bar-row">
-      <span class="bar-platform">Instagram</span>
-      <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
-      <span class="bar-val">92% <span class="bar-sub">reach</span></span>
-    </div>
-    <div class="bar-row">
-      <span class="bar-platform">TikTok</span>
-      <div class="bar-track"><div class="bar-fill delay1" style="width:78%"></div></div>
-      <span class="bar-val">78% <span class="bar-sub">reach</span></span>
-    </div>
-    <div class="bar-row">
-      <span class="bar-platform">YouTube Shorts</span>
-      <div class="bar-track"><div class="bar-fill delay2" style="width:55%"></div></div>
-      <span class="bar-val">55% <span class="bar-sub">reach</span></span>
-    </div>
-    <div class="bar-row">
-      <span class="bar-platform">Engagement</span>
-      <div class="bar-track"><div class="bar-fill delay3" style="width:84%"></div></div>
-      <span class="bar-val">↑ 84% <span class="bar-sub">vs baseline</span></span>
+    <div class="pillar-grid">
+      <div class="pillar-cell">
+        <span class="pillar-num">Pillar 01</span>
+        <div class="pillar-name">Education</div>
+        <div class="pillar-desc">Ingredient breakdowns, skincare myths, and clinical explainers — building authority and trust with a beauty-literate audience</div>
+      </div>
+      <div class="pillar-cell">
+        <span class="pillar-num">Pillar 02</span>
+        <div class="pillar-name">Ritual</div>
+        <div class="pillar-desc">Aspirational routine content — positioning PERS as part of a daily practice, not just a product purchase</div>
+      </div>
+      <div class="pillar-cell">
+        <span class="pillar-num">Pillar 03</span>
+        <div class="pillar-name">Founder POV</div>
+        <div class="pillar-desc">Behind-the-brand storytelling — lending the brand a face and a voice that felt personal and credible</div>
+      </div>
+      <div class="pillar-cell">
+        <span class="pillar-num">Pillar 04</span>
+        <div class="pillar-name">Social Proof</div>
+        <div class="pillar-desc">Results-led content and community responses — converting awareness into consideration through visible outcomes</div>
+      </div>
+      <div class="pillar-cell">
+        <span class="pillar-num">Pillar 05</span>
+        <div class="pillar-name">Product Story</div>
+        <div class="pillar-desc">Hero product features framed around benefit, not ingredient — written for scroll, not shelf</div>
+      </div>
+      <div class="pillar-cell">
+        <span class="pillar-num">Pillar 06</span>
+        <div class="pillar-name">Culture</div>
+        <div class="pillar-desc">Trend-aware content connecting PERS to wider beauty conversations — keeping the brand relevant beyond its own feed</div>
+      </div>
     </div>
   </div>
 
-  <!-- CONTENT TYPE GRID -->
-  <div class="content-grid">
-    <div class="content-cell">
-      <span class="content-type">Scripted</span>
-      <div class="content-desc">Brand narrative scripts aligned to clinical positioning</div>
+  <!-- REPEATABLE FORMATS -->
+  <div class="formats">
+    <div class="formats-header">
+      <span class="formats-label">Repeatable Formats · Built for handoff</span>
     </div>
-    <div class="content-cell">
-      <span class="content-type">Shot</span>
-      <div class="content-desc">Cinematic DP work across hero + editorial formats</div>
+    <div class="format-row">
+      <span class="format-name">The 3-Step Routine</span>
+      <span class="format-desc">Short-form video format — product used in sequence with voiceover. Designed to be filmed by the founder without crew.</span>
+      <span class="format-platform">Reels · TikTok</span>
     </div>
-    <div class="content-cell">
-      <span class="content-type">Edited</span>
-      <div class="content-desc">Platform-native cuts: Reels, TikTok, Shorts</div>
+    <div class="format-row">
+      <span class="format-name">Ingredient Spotlight</span>
+      <span class="format-desc">Single ingredient, single benefit, single visual. Text-led with minimal production. High frequency, low effort.</span>
+      <span class="format-platform">Stories · Shorts</span>
     </div>
-    <div class="content-cell">
-      <span class="content-type">Colored</span>
-      <div class="content-desc">Custom grade establishing consistent visual brand tone</div>
+    <div class="format-row">
+      <span class="format-name">Before / After</span>
+      <span class="format-desc">Split-frame results content. Scripted captions, consistent framing — built around a template the founder could repeat.</span>
+      <span class="format-platform">Reels · TikTok</span>
+    </div>
+    <div class="format-row">
+      <span class="format-name">Founder Diary</span>
+      <span class="format-desc">Lo-fi talking-head format for founder-to-camera content. Script structure and visual guidelines provided for self-filming.</span>
+      <span class="format-platform">TikTok · Stories</span>
     </div>
   </div>
 
@@ -236,7 +339,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
     <div class="win-cell">
       <span class="win-label">Production</span>
       <div class="win-title">End-to-End Creative Direction</div>
-      <div class="win-desc">Scripted, shot, and edited every asset — cinematic visuals aligned with marketing goals and clinical brand positioning.</div>
+      <div class="win-desc">Handled the full production pipeline solo — concept, script, shoot, edit, color grade, and delivery — ensuring brand consistency at every stage without a production team.</div>
     </div>
     <div class="win-cell">
       <span class="win-label">Systems</span>
@@ -246,7 +349,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   </div>
 
   <div class="pullquote">
-    <p>Directed creative production: scripted, shot, and edited high-impact content that aligned cinematic visuals with marketing goals and brand positioning.</p>
+    <p>Built a brand from silence — no audience, no precedent, no template. Just strategy, a camera, and a content system designed to compound.</p>
     <cite>Beauty Brand Launch · Instagram · TikTok · YouTube Shorts</cite>
   </div>
 
@@ -270,6 +373,12 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
   document.addEventListener('mouseleave', () => drop.style.opacity = '0');
   document.addEventListener('mouseenter', () => drop.style.opacity = '1');
+
+  const interactables = 'a, button, .win-cell, .fs-cell, .skill-cell, .content-cell, .pillar-cell, .mandate-line, .format-row, .pub-row, .entry-video, .film-entry, .rb-cell, .qoq-cell, .lift-cell, .tl-item';
+  document.querySelectorAll(interactables).forEach(el => {
+    el.addEventListener('mouseenter', () => drop.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => drop.classList.remove('hovering'));
+  });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 

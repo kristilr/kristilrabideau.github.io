@@ -138,6 +138,18 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   z-index: 99999;
   transform: translate(-50%, -50%);
   will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+.ink-drop.hovering {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1.5px solid #e8a0c0;
+  animation: ink-pulse 0.9s ease-in-out infinite;
+}
+@keyframes ink-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50%       { transform: translate(-50%, -50%) scale(1.18); opacity: 0.5; }
 }
 </style>
 </head>
@@ -297,6 +309,12 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
   document.addEventListener('mouseleave', () => drop.style.opacity = '0');
   document.addEventListener('mouseenter', () => drop.style.opacity = '1');
+
+  const interactables = 'a, button, .win-cell, .fs-cell, .skill-cell, .content-cell, .pillar-cell, .mandate-line, .format-row, .pub-row, .entry-video, .film-entry, .rb-cell, .qoq-cell, .lift-cell, .tl-item';
+  document.querySelectorAll(interactables).forEach(el => {
+    el.addEventListener('mouseenter', () => drop.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => drop.classList.remove('hovering'));
+  });
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
