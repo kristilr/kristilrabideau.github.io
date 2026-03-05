@@ -58,9 +58,29 @@ html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-
 
 /* ── ESSAY LIST ── */
 .essay-list { list-style: none; border-top: 1px solid var(--rule); }
-.essay-item { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule); gap: 1rem; }
-.essay-title { font-size: 0.86rem; font-weight: 300; color: var(--ink); font-style: italic; }
+.essay-item { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule); gap: 1rem; position: relative; }
+.essay-title { font-size: 0.86rem; font-weight: 300; color: var(--ink); font-style: italic; transition: opacity 0.3s ease; }
 .essay-meta { font-size: 0.65rem; font-weight: 300; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
+.essay-item a { position: relative; }
+.essay-item a::after {
+  content: 'Read Essay';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.86rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.essay-item a:hover .essay-title {
+  opacity: 0;
+}
+.essay-item a:hover::after {
+  opacity: 0.6;
+}
 
 /* ── CURSOR ── */
 .ink-drop { position: fixed; top: 0; left: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); will-change: transform; transition: width 0.18s, height 0.18s; }
