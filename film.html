@@ -159,6 +159,18 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 .sidebar * {
   pointer-events: auto;
 }
+
+.audio-btn {
+  position: absolute; bottom: 0.75rem; right: 0.75rem;
+  background: rgba(0,0,0,0.45); border: none; border-radius: 2px;
+  padding: 0.25rem 0.6rem; cursor: pointer !important;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.55rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.85); z-index: 10;
+  transition: background 0.2s;
+}
+.audio-btn:hover { background: rgba(0,0,0,0.75); }
+.film-video { position: relative; }
 </style>
 </head>
 <body>
@@ -237,6 +249,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   <div class="film-entry" id="nike-boxing">
     <div class="film-video">
       <video src="nike-boxing.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+      <button class="audio-btn" onclick="var v=this.closest('.film-video').querySelector('video');v.muted=!v.muted;this.textContent=v.muted?'MUTE':'UNMUTE'">MUTE</button>
       <div class="film-video-ph"><span>Nike Boxing</span></div>
     </div>
         <div class="film-body">
@@ -259,6 +272,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   <div class="film-entry" id="setting-things-on-fire">
     <div class="film-video">
       <video src="setting-things-on-fire.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+      <button class="audio-btn" onclick="var v=this.closest('.film-video').querySelector('video');v.muted=!v.muted;this.textContent=v.muted?'MUTE':'UNMUTE'">MUTE</button>
       <div class="film-video-ph"><span>Setting Things on Fire</span></div>
     </div>
         <div class="film-body">
@@ -281,6 +295,7 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
   <div class="film-entry" id="city-of-love">
     <div class="film-video">
       <video src="city-of-love.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+      <button class="audio-btn" onclick="var v=this.closest('.film-video').querySelector('video');v.muted=!v.muted;this.textContent=v.muted?'MUTE':'UNMUTE'">MUTE</button>
       <div class="film-video-ph"><span>City of Love</span></div>
     </div>
         <div class="film-body">
@@ -300,8 +315,9 @@ body { background: #fff; color: var(--ink); font-family: 'Space Grotesk', sans-s
 </div>
 
 <div class="page-nav">
-  <a href="writers.html">← Studio R–M</a>
-  
+  <a href="vawaa.html">← VAWAA</a>
+  <a class="nav-email" href="#" data-em></a>
+  <span></span>
 </div>
   </main>
 </div>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LE MÉTRO — Kristil Rabideau</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+:root {
+  --accent: #e8a0c0;
+  --accent-light: #fff0f7;
+  --ink: #2a2a2a;
+  --mid: #5a5a5a;
+  --muted: #999;
+  --rule: #e8e8e8;
+  --sidebar: 195px;
+}
+html, body { height: 100%; overflow: hidden; font-family: 'Space Grotesk', sans-serif; font-weight: 300; background: #fff; color: var(--ink); }
+.layout { display: flex; height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar { width: var(--sidebar); flex-shrink: 0; height: 100vh; position: fixed; left: 0; top: 0; display: flex; flex-direction: column; align-items: flex-end; text-align: right; padding: 2.2rem 1.5rem 2rem 0.75rem; background: #fff; z-index: 20; pointer-events: none; }
+.sidebar * { pointer-events: auto; }
+.sidebar-name { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; line-height: 1.35; color: var(--ink); }
+.sidebar-roles { font-size: 0.75rem; font-weight: 300; color: var(--mid); line-height: 1.65; margin-top: 0.35rem; }
+.sidebar-logo { margin-top: 1.1rem; width: 64px; height: 64px; object-fit: contain; }
+.sidebar-link { margin-top: 1rem; font-size: 0.75rem; font-weight: 300; color: var(--mid); text-decoration: none; }
+.sidebar-link:hover { color: var(--ink); }
+
+/* ── SCROLL ── */
+.scroll-area { width: 100%; height: 100vh; overflow-y: auto; overflow-x: hidden; padding-left: var(--sidebar); }
+.page { max-width: 960px; margin: 0; padding: 4rem 2.5rem 7rem 2.5rem; }
+
+/* ── HEADER ── */
+.cs-header { margin-bottom: 3rem; }
+.cs-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 400; letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 1.5rem; color: var(--ink); }
+.cs-title em { font-style: italic; color: var(--accent); }
+.cs-meta { font-size: 0.84rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); line-height: 2; }
+.cs-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.9; max-width: 720px; margin-bottom: 4rem; border-top: 1px solid var(--rule); padding-top: 2.5rem; }
+
+/* ── SECTION LABELS ── */
+.section-label { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 1rem; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.section-block { margin-bottom: 4rem; }
+
+/* ── STAT GRID ── */
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; }
+.stat-item { padding: 1.5rem; border: 1px solid var(--rule); }
+.stat-num { font-size: 2.2rem; font-weight: 300; color: var(--accent); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
+
+/* ── ROLE GRID ── */
+.role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 4rem; }
+.role-item { padding: 1.5rem; background: var(--accent-light); }
+.role-title { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+.role-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.8; color: var(--mid); }
+
+/* ── ESSAY LIST ── */
+.essay-list { list-style: none; border-top: 1px solid var(--rule); }
+.essay-item { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--rule); gap: 1rem; }
+.essay-title { font-size: 0.86rem; font-weight: 300; color: var(--ink); font-style: italic; }
+.essay-meta { font-size: 0.65rem; font-weight: 300; letter-spacing: 0.08em; color: var(--muted); white-space: nowrap; }
+
+/* ── CURSOR ── */
+.ink-drop { position: fixed; top: 0; left: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); will-change: transform; transition: width 0.18s, height 0.18s; }
+.ink-drop.hovering { width: 28px; height: 28px; background: transparent; border: 1.5px solid var(--accent); animation: ink-pulse 0.85s ease-in-out infinite; }
+@keyframes ink-pulse { 0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.9; } 50% { transform: translate(-50%,-50%) scale(1.18); opacity: 0.45; } }
+
+/* ── FLOATING NAV ── */
+.page-nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2.5rem 1rem calc(var(--sidebar) + 2.5rem); background: rgba(255,255,255,0.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid rgba(224,224,224,0.6); z-index: 30; }
+.page-nav a { font-size: 0.72rem; font-weight: 400; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.page-nav a:hover { color: var(--ink); }
+.page-nav .nav-pink { color: var(--accent); }
+.page-nav .nav-email { font-size: 0.68rem; color: var(--muted); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  html, body { overflow: auto; height: auto; }
+  .layout { display: block; }
+  .sidebar { position: relative !important; width: 100% !important; height: auto !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; text-align: left !important; padding: 1rem 1.25rem !important; border-bottom: 1px solid var(--rule); min-height: 0 !important; }
+  .sidebar-roles { display: none !important; }
+  .sidebar-logo { margin-top: 0 !important; width: 32px !important; height: 32px !important; }
+  .sidebar-link { margin-top: 0 !important; }
+  .scroll-area { height: auto !important; overflow: visible !important; padding-left: 0 !important; }
+  .page { padding: 1.5rem 1.25rem 6rem !important; max-width: 100% !important; }
+  .stat-grid { grid-template-columns: 1fr 1fr !important; }
+  .role-grid { grid-template-columns: 1fr !important; }
+  .page-nav { padding: 0.75rem 1.25rem !important; }
+  .cs-title { font-size: 2.5rem !important; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-name">KRISTIL<br>RABIDEAU</div>
+    <div class="sidebar-roles">Content Creation<br>Editorial Direction<br>Social Management</div>
+    <img src="logo.gif" class="sidebar-logo" alt="">
+    <a class="sidebar-link" href="index.html">← Home</a>
+  </aside>
+  <main class="scroll-area">
+    <div class="page">
+
+      <div class="cs-header">
+        <h1 class="cs-title"><em>LE MÉTRO</em></h1>
+        <div class="cs-meta">Publication · Editorial Direction · Cultural Criticism · Audience Growth · Social Strategy</div>
+        <div style="margin-top:1rem;font-size:0.68rem;font-weight:300;color:#666;letter-spacing:0.08em;">
+          Read on <a href="https://lemetro.substack.com" target="_blank" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Substack</a>
+        </div>
+      </div>
+
+      <p class="cs-intro">Founded and edited LE MÉTRO, a Substack publication exploring literature and culture through close reading and critical essay. Responsible for all aspects of the publication — concept development, writing, editing, visual identity, audience growth strategy, and paid and organic social campaigns.</p>
+
+      <!-- STATS -->
+      <div class="section-block">
+        <div class="section-label">Publication Overview</div>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-num">Sept<br>2025</div>
+            <div class="stat-label">Founded</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">Essay<br>Driven</div>
+            <div class="stat-label">Close Reading · Cultural Criticism · Theory</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">Paid +<br>Organic</div>
+            <div class="stat-label">Social Campaign Management</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROLES -->
+      <div class="section-block">
+        <div class="section-label">Responsibilities</div>
+        <div class="role-grid">
+          <div class="role-item">
+            <div class="role-title">Editorial Direction</div>
+            <div class="role-desc">Develop timely essay concepts. Conduct research and perform theoretical inquiries and close readings. Write and edit essays with attention to reader profiles and cultural moment.</div>
+          </div>
+          <div class="role-item">
+            <div class="role-title">Visual Identity</div>
+            <div class="role-desc">Shape the visual identity of the publication — typography, layout, imagery — to reflect the editorial tone and attract a discerning, literary audience.</div>
+          </div>
+          <div class="role-item">
+            <div class="role-title">Audience Growth</div>
+            <div class="role-desc">Design mission-driven growth strategies. Analyze audience engagement data to refine content and distribution. Build and maintain subscriber relationships.</div>
+          </div>
+          <div class="role-item">
+            <div class="role-title">Social &amp; Campaigns</div>
+            <div class="role-desc">Create promotional materials and manage paid and organic social campaigns across platforms to grow readership and drive subscriptions.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  </main>
+</div>
+
+<div class="page-nav">
+  <a href="writers.html">← Studio R–M</a>
+  <a class="nav-email" href="#" data-em></a>
+  <a class="nav-pink" href="vawaa.html">VAWAA →</a>
+</div>
+
+<div class="ink-drop" id="cursor"></div>
+
+<script>
+(function() {
+  // email
+  var a = document.querySelector('[data-em]');
+  var e = 'rabideaukristil' + '@' + 'gmail' + '.com';
+  a.href = 'mailto:' + e; a.textContent = e;
+
+  // cursor
+  var drop = document.getElementById('cursor');
+  var cx = -100, cy = -100, px = -100, py = -100;
+  document.addEventListener('mousemove', function(e) { cx = e.clientX; cy = e.clientY; });
+  document.addEventListener('mouseleave', function() { drop.style.opacity = '0'; });
+  document.addEventListener('mouseenter', function() { drop.style.opacity = '1'; });
+  document.querySelectorAll('a, button').forEach(function(el) {
+    el.addEventListener('mouseenter', function() { drop.classList.add('hovering'); });
+    el.addEventListener('mouseleave', function() { drop.classList.remove('hovering'); });
+  });
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function tick() {
+    var vx = cx - px, vy = cy - py;
+    var speed = Math.sqrt(vx*vx + vy*vy);
+    px = lerp(px, cx, 0.28); py = lerp(py, cy, 0.28);
+    if (!drop.classList.contains('hovering')) {
+      var stretch = Math.min(speed * 0.18, 1.8);
+      var angle = Math.atan2(vy, vx) * 180 / Math.PI;
+      drop.style.transform = 'translate(-50%,-50%) rotate('+angle+'deg) scaleX('+(1+stretch)+') scaleY('+Math.max(1-stretch*0.45,0.35)+')';
+    } else {
+      drop.style.transform = 'translate(-50%,-50%)';
+    }
+    drop.style.left = px+'px'; drop.style.top = py+'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // sidebar scroll passthrough
+  var sb = document.querySelector('.sidebar');
+  var sc = document.querySelector('.scroll-area');
+  if (sb && sc) sb.addEventListener('wheel', function(e) { e.preventDefault(); sc.scrollTop += e.deltaY * 1.2; }, { passive: false });
+})();
+</script>
+</body>
+</html>

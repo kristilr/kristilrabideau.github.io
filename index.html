@@ -53,7 +53,6 @@ html, body {
   background: #111; overflow: hidden; position: relative;
 }
 .entry-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.entry-video img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .entry-video-ph {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
@@ -114,34 +113,19 @@ html, body {
   pointer-events: auto;
 }
 
-/* ── MOBILE ── */
+.sidebar-name { font-size: 0.85rem !important; }
+.sidebar-roles { font-size: 0.75rem !important; }
+.sidebar-link { font-size: 0.75rem !important; }
 @media (max-width: 768px) {
   html, body { overflow: auto; height: auto; }
   .layout { display: block; }
-  .sidebar {
-    position: relative !important; width: 100% !important; height: auto !important;
-    flex-direction: row !important; align-items: center !important;
-    justify-content: space-between !important; text-align: left !important;
-    padding: 1rem 1.25rem !important; border-bottom: 1px solid #e0e0e0;
-    min-height: 0 !important;
-  }
+  .sidebar { position: relative !important; width: 100% !important; height: auto !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; text-align: left !important; padding: 1rem 1.25rem !important; border-bottom: 1px solid #e0e0e0; min-height: 0 !important; }
   .sidebar-roles { display: none !important; }
   .sidebar-logo { margin-top: 0 !important; width: 32px !important; height: 32px !important; }
   .sidebar-link { margin-top: 0 !important; }
-  .scroll-area { 
-    height: auto !important; overflow: visible !important; 
-    padding-left: 0 !important; margin-left: 0 !important;
-  }
+  .scroll-area { height: auto !important; overflow: visible !important; padding-left: 0 !important; }
   .entry { padding: 1.5rem 1.25rem 0 !important; }
   .site-footer { padding: 1rem 1.25rem 5rem !important; }
-  .wrap, .page { padding: 1.5rem 1.25rem 6rem !important; max-width: 100% !important; }
-  .reveal { opacity: 1 !important; transform: none !important; }
-  .page-nav { padding: 0.75rem 1.25rem !important; }
-  .about-footer { padding: 0.75rem 1.25rem !important; flex-wrap: wrap; gap: 1rem; }
-  .about-layout { flex-direction: column !important; }
-  .about-photo-wrap { width: 140px !important; margin: 0 auto !important; }
-  .cs-title { font-size: 2.5rem !important; }
-  .fs-grid, .wins-grid, .pillars-grid, .formats-grid { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
@@ -198,8 +182,31 @@ html, body {
     </div>
 
     <div class="entry">
+      <div class="entry-video" style="background:#1c1c1c;">
+        <img src="studio-rm.gif" style="width:100%;height:100%;object-fit:cover;" alt="Studio R-M">
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">STUDIO R–M</span><span class="t-sep">|</span>
+        <span class="t-sub">Scriptwriting, Copywriting + Developmental Editing</span><span class="t-sep">|</span>
+        <a class="t-cta" href="writers.html">See the results →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-video" style="background:#f5f0eb;">
+        <img src="lemetro.gif" style="width:100%;height:100%;object-fit:cover;" alt="LE MÉTRO">
+      </div>
+      <div class="entry-caption">
+        <span class="t-title">LE MÉTRO</span><span class="t-sep">|</span>
+        <span class="t-sub">Publication · Editorial Direction · Cultural Criticism</span><span class="t-sep">|</span>
+        <a class="t-cta" href="lemetro.html">See the work →</a>
+      </div>
+    </div>
+
+    <div class="entry">
       <div class="entry-video" style="background:#f0eef8;">
         <img src="vawaa.gif" style="width:100%;height:100%;object-fit:cover;" alt="VAWAA">
+      </div>
       </div>
       <div class="entry-caption">
         <span class="t-title">VAWAA</span><span class="t-sep">|</span>
@@ -209,20 +216,9 @@ html, body {
     </div>
 
     <div class="entry">
-      <div class="entry-video" style="background:#1c1c1c;">
-        <img src="studio-rm.gif" style="width:100%;height:100%;object-fit:cover;" alt="Studio R-M">
-      </div>
-      <div class="entry-caption">
-        <span class="t-title">STUDIO R–M</span><span class="t-sep">|</span>
-        <span class="t-sub">Scriptwriting, Copywriting, + Developmental Editing</span><span class="t-sep">|</span>
-        <a class="t-cta" href="writers.html">See the results →</a>
-      </div>
-    </div>
-
-    <div class="entry">
       <div class="entry-video" style="background:#0d0d0d;">
         <video src="nike-boxing.mp4" autoplay muted loop playsinline></video>
-        <div class="entry-video-ph"><span style="font-size:0.4rem;letter-spacing:0.16em;color:rgba(255,255,255,0.13);">Nike Boxing · Setting Things on Fire · City of Love</span></div>
+      </div>
       </div>
       <div class="entry-caption">
         <span class="t-title">FILM & SPEC</span><span class="t-sep">|</span>
@@ -230,6 +226,8 @@ html, body {
         <a class="t-cta" href="film.html">See the work →</a>
       </div>
     </div>
+
+    
 
     <footer class="site-footer">
       &nbsp;
@@ -307,9 +305,7 @@ html, body {
 <script>
 (function(){
   var u='rabideaukristil',d='gmail.com';
-  document.querySelectorAll('[data-em]').forEach(function(a){
-    a.href='mailto:'+u+'@'+d; a.textContent=u+'@'+d;
-  });
+  document.querySelectorAll('[data-em]').forEach(function(a){a.href='mailto:'+u+'@'+d;a.textContent=u+'@'+d;});
 })();
 </script>
 </body>
